@@ -1,18 +1,23 @@
 
-
+<script src="javascripts/generate_random_robots_for_home.js"></script>
 <div class="container demo-1">
 			<!-- Top Navigation -->
-
-			<img class="rounded-circle img-fluid" data-toggle="tooltip" data-bs-tooltip="" src="img/functional-chris.png" title="Functional Chris" style="width: 200px;background-color: #605959;margin-top: 25%;margin-left: 10%;">
+		
+<div class="text-center">
+	<br><br><br>
+				<h1>Welcome to the inaugural Robo-Danceoff</h1>
+			</div>
+			<img class="rounded-circle img-fluid"  id="firstRobot" data-toggle="tooltip" data-bs-tooltip="" src=""  style="width: 200px;background-color: #605959;margin-top: 15%;margin-left: 10%;">
 			<img class="img-fluid" src="img/Versus_sign.png"
-        style="width: 100px;margin-top: 25%;margin-left: 20%;">
-		<img class="rounded-circle img-fluid" style="margin-top: 25%;background-color: #605959;width: 200px;margin-left: 20%;" src="img/sliding-stephanie.png">
+        style="width: 100px;margin-top: 15%;margin-left: 20%;">
+		<img class="rounded-circle img-fluid" id="secondRobot" style="margin-top: 15%;background-color: #605959;width: 200px;margin-left: 20%;" src="">
 			<br>
 			<br><br>
 			<button class="btn btn-dark mt-1 btn-lg btn-block" type="button" data-toggle="modal" data-target="#enterTeam">
 				 <i class="fas fa-robot"></i> <span class="pl-1 d-none d-sm-inline-block">Let's get ready to DANCE</span>
             </button>
-			 <!--Basic Search-->
+			
+			 <!--Enter Team Name-->
             <div class="modal fade" id="enterTeam" tabindex="-1" role="dialog" aria-labelledby="Search Modal"
               aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -25,27 +30,24 @@
                   </div>
                   <div class="modal-body text-secondary">
           		<div class="main clearfix">
-				<form id="nl-form" class="nl-form" action="result" method="GET">
-					I'm looking for a shop called  
-					<input type="text" name="shopName" value="" placeholder="Some Shop" data-subline="For example: <em>Spar</em> or <em>Media Markt</em>"/>
-					<br />which is a
-					<input type="text" name="category" value="" placeholder="non-specific" data-subline="For example: <em>Supermarket</em> or <em>Gift</em>"/>
-					shop.
+				<form id="nl-form" class="nl-form" action="competition" method="GET">
+					In the left corner we have  
+					<input type="text" name="teamOne" value="" placeholder="the Home Team" data-subline="For example: <em>The Rust Buckets</em> or <em>The Tin Cans</em>" required/>
+					<br />and in the right corner we have
+					<input type="text" name="teamTwo" value="" placeholder="the other Team" data-subline="For example: <em>Circuit Breakers</em> or <em>Nuts and Bolts</em>" required/>
 					
 					<div class="nl-submit-wrap">
-						<button class="nl-submit" type="submit">Find a shop</button>
-						<button class="nl-submit" onclick="window.location.href='/advanced'" type="button">Advanced Search</button>
+						<button class="nl-submit" type="submit">Get the Team Members</button>
+						
 					</div>
 					<div class="nl-overlay"></div>
 
 				
 				</form>
-					Avaliabe Categories: <select id="category">
-						<option value="" selected>non-specific</option>
-						{{#each records}}
-						<option value="{{this.category}}">{{this.category}}</option>
-						{{/each}}
-					</select>
+<br>
+<br>
+				<h3><code>Click on the underlined sections to enter a Team Name</code></h3>
+					
 			</div>
 		</div><!-- /container -->
 		<script src="javascripts/nlform.js"></script>
@@ -60,5 +62,6 @@
               </div>
             </div>
           </div>
+		
 			
 	</body>

@@ -21,6 +21,8 @@ app.set('view engine', 'handlebars')
 
 // Include routers
 const homeRoutes = require('./routes/home')
+const leaderboardRoutes = require('./routes/leaderboard')
+const competitionRoutes = require('./routes/competition')
 
 
 
@@ -36,6 +38,14 @@ app.use(express.static('public'))
 
 // home route
 app.use('/', homeRoutes)
+
+// leaderboard route
+
+app.use('/leaderboard', leaderboardRoutes)
+
+// competition routes
+
+app.use('/competition', competitionRoutes)
 
 
 // error page
