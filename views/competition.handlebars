@@ -15,7 +15,7 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Robot Name</th>
-                        <th scope="col">Power move</th>
+                        <th scope="col">Power Move</th>
                         <th scope="col">Avatar</th>
                         
                         
@@ -24,7 +24,7 @@
                 </thead>
                        
             
-        {{#each records}}
+        {{#each teamOne}}
         
 
 
@@ -35,7 +35,7 @@
                     
                         <tr>
                             <td>{{this.name}}</td>
-                            <td>{{this.lat}}</td>
+                            <td>{{this.powermove}}</td>
                             <td> <button class="btn btn-info" type="button" data-toggle="modal" data-target="#info{{this.id}}">
               
               <span class="pl-1 d-none d-sm-inline-block">View</span>
@@ -58,21 +58,16 @@
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title text-secondary font-weight-bold"><i
-                        class="fas fa-info-circle"></i> {{this.name}}</h5>
+                    <h5 class="modal-title text-secondary font-weight-bold text-center"><i
+                        class="fas fa-robot"></i> {{this.name}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body text-secondary">
-                    <span class="font-weight-bold">{{this.name}}</span>
-                    <br> <p><i class="fas fa-map-marker-alt"></i> {{this.lat}} , {{this.lon}}</p>
-                    <p></p><i class="fab fa-internet-explorer"></i> <a href = "{{this.website}}" target="_blank">{{this.website}}</a></p>
-                    <p></p><i class="far fa-clock"></i> {{this.tradingHours}}</p>
-                    <p></p><i class="fas fa-folder"></i> {{this.category}}</p>
-                    <p></p><i class="fas fa-road"></i> {{this.street}}</p>
-                    <p></p><i class="fas fa-envelope"></i> {{this.postalCode}}</p>
-                    <p><i class="fas fa-map"></i> <a href="map?lat={{this.lat}}&lon={{this.lon}}&radius={{this.radiusToPoi}}" target="_blank">View this Premises on a map</a></p>
+                    <div class="d-flex justify-content-center">
+                    <img class="rounded-circle img-fluid" src="{{this.avatar}}" alt="{{this.name}}">
+                    </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok, Got it</button>
                     
@@ -93,7 +88,7 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Robot Name</th>
-                        <th scope="col">Power move</th>
+                        <th scope="col">Power Move</th>
                         <th scope="col">Avatar</th>
                         
                         
@@ -102,7 +97,7 @@
                 </thead>
                        
             
-        {{#each records}}
+        {{#each teamTwo}}
         
 
 
@@ -113,7 +108,7 @@
                     
                         <tr>
                             <td>{{this.name}}</td>
-                            <td>{{this.lat}}</td>
+                            <td>{{this.powermove}}</td>
                             <td> <button class="btn btn-info" type="button" data-toggle="modal" data-target="#info{{this.id}}">
               
               <span class="pl-1 d-none d-sm-inline-block">View</span>
@@ -137,20 +132,15 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title text-secondary font-weight-bold"><i
-                        class="fas fa-info-circle"></i> {{this.name}}</h5>
+                        class="fas robot"></i> {{this.name}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body text-secondary">
-                    <span class="font-weight-bold">{{this.name}}</span>
-                    <br> <p><i class="fas fa-map-marker-alt"></i> {{this.lat}} , {{this.lon}}</p>
-                    <p></p><i class="fab fa-internet-explorer"></i> <a href = "{{this.website}}" target="_blank">{{this.website}}</a></p>
-                    <p></p><i class="far fa-clock"></i> {{this.tradingHours}}</p>
-                    <p></p><i class="fas fa-folder"></i> {{this.category}}</p>
-                    <p></p><i class="fas fa-road"></i> {{this.street}}</p>
-                    <p></p><i class="fas fa-envelope"></i> {{this.postalCode}}</p>
-                    <p><i class="fas fa-map"></i> <a href="map?lat={{this.lat}}&lon={{this.lon}}&radius={{this.radiusToPoi}}" target="_blank">View this Premises on a map</a></p>
+                    <div class="d-flex justify-content-center">
+                    <img class="rounded-circle img-fluid" src="{{this.avatar}}" alt="{{this.name}}">
+                    </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok, Got it</button>
                     
