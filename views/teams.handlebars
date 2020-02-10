@@ -13,7 +13,7 @@
 <h2 class="text-uppercase sub-header">Team {{teamOne.teamName}}</h2>
 <h3 class="sub-header">Experience {{teamOne.experience}}</h3>
   <div class="table-responsive">
-                 <h1>Id {{danceoffCompetetors}}</h1>
+                
                  <table id="searchTable" class="table table-dark table-hover" >
   
                 <thead class="thead-dark">
@@ -172,7 +172,7 @@
                     </button>
                   </div>
                   <div class="modal-body text-secondary">
-          	<form action="danceoff" method="GET">
+          	<form action="danceoff" method="POST">
                <input type="range" min="1" max="5" value="2" class="slider" id="danceoffs" name="danceoffs">
                  <p>Danceoffs: <span id="danceoffAmount"></span></p>
                  <input type="hidden" name="danceoffId" value="{{danceoffCompetetors}}">

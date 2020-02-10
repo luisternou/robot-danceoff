@@ -23,6 +23,7 @@ app.set('view engine', 'handlebars')
 const homeRoutes = require('./routes/home')
 const leaderboardRoutes = require('./routes/leaderboard')
 const teamRoutes = require('./routes/teams')
+const danceoffRoutes = require('./routes/danceoff')
 
 
 
@@ -47,7 +48,7 @@ app.use('/leaderboard', leaderboardRoutes)
 
 app.use('/teams', teamRoutes)
 
-//app.use('/danceoff', competitionRoutes)
+app.use('/danceoff', danceoffRoutes)
 
 
 // error page
