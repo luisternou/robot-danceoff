@@ -20,12 +20,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    {{#each leaderboardData}}
                         <tr>
-                            <td>{{this.name}}</td>
-                            <td>{{this.lat}}</td>
-                            <td>{{this.lon}}</td>
-                            <td>{{this.category}}</td>
+                            <td>{{this.id}}</td>
+                            <td>{{this.winner.name}}</td>
+                            <td>{{this.loser.name}}</td>
+                            <td>{{this.dancedAt}}</td>
                             
               
               
@@ -33,6 +33,7 @@
                         </tr>
                     
                 </tbody>
+                {{/each}}
  </table>
 
           </div>
