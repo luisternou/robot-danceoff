@@ -7,9 +7,13 @@
       <div class="text-center">
       <h3><i class="fas fa-users"></i> Teams</h3>
       </div>
+      
+      <button type="button" class="btn btn-block btn-dark" data-toggle="modal" data-target="#startDanceoff"><i class="fas fa-robot"></i> Let's get this road on the show</button>
  <div class="col-xs-5">
-<h2 class="text-uppercase sub-header">Team {{query.teamOne}}</h2>
+<h2 class="text-uppercase sub-header">Team {{teamOne.teamName}}</h2>
+<h3 class="sub-header">Experience {{teamOne.experience}}</h3>
   <div class="table-responsive">
+                 <h1>Id {{danceoffCompetetors}}</h1>
                  <table id="searchTable" class="table table-dark table-hover" >
   
                 <thead class="thead-dark">
@@ -83,7 +87,8 @@
           </div>
 
           <div class="col-xs-5">
-<h2 class="text-uppercase sub-header">Team {{query.teamTwo}}</h2>
+<h2 class="text-uppercase sub-header">Team {{teamTwo.teamName}}</h2>
+<h3 class="sub-header">Experience {{teamTwo.experience}}</h3>
   <div class="table-responsive">
                  <table id="searchTable" class="table table-dark table-hover" >
   
@@ -155,5 +160,43 @@
         {{/each}}
           </table>
           </div>
-			
+
+          <div class="modal fade" id="startDanceoff" tabindex="-1" role="dialog" aria-labelledby="Search Modal"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-secondary font-weight-bold"><i class="fas fa-robot"></i> How many danceoffs would you like</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body text-secondary">
+          	<form action="danceoff" method="GET">
+               <input type="range" min="1" max="5" value="2" class="slider" id="danceoffs" name="danceoffs">
+                 <p>Danceoffs: <span id="danceoffAmount"></span></p>
+                 <input type="hidden" name="danceoffId" value="{{danceoffCompetetors}}">
+                 <button class="btn btn-primary" type="submit">Let's get ready to dance</button>
+            </form>
+
+            <script>
+             var slider = document.getElementById("danceoffs");
+var output = document.getElementById("danceoffAmount");
+output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+            </script>
+		</div><!-- /container -->
+		
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, i'll go back</button>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 	</body>

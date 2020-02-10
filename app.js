@@ -22,7 +22,7 @@ app.set('view engine', 'handlebars')
 // Include routers
 const homeRoutes = require('./routes/home')
 const leaderboardRoutes = require('./routes/leaderboard')
-const competitionRoutes = require('./routes/competition')
+const teamRoutes = require('./routes/teams')
 
 
 
@@ -45,7 +45,9 @@ app.use('/leaderboard', leaderboardRoutes)
 
 // competition routes
 
-app.use('/competition', competitionRoutes)
+app.use('/teams', teamRoutes)
+
+//app.use('/danceoff', competitionRoutes)
 
 
 // error page

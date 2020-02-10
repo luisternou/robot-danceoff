@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 // Include controllers
-const homeController = require('../controllers/competition')
+const homeController = require('../controllers/teams')
 
 
 router.get('/', homeController.getTeams)
