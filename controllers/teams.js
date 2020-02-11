@@ -11,28 +11,28 @@ let query = req.query
 let teamOneName = query.teamOne;
 let teamTwoName = query.teamTwo;
  
- 
-    let robotIds = []
 
-    function getRobotIds(outoforder, tooExpierienced) {
-      let robotIds = []
-      for (let index = 0; index < 10; index++) {
-      let currentNumber = Math.ceil(Math.random() * 40)
-      if (robotIds.includes(currentNumber) | outoforder.includes(currentNumber) | tooExpierienced.includes(currentNumber)) {
-        currentNumber = Math.ceil(Math.random() * 40)
-      }
-      if (tooExpierienced.includes(currentNumber)) {
-        currentNumber = Math.ceil(Math.random() * 40)
-      }
-       if (outoforder.includes(currentNumber)) {
-        currentNumber = Math.ceil(Math.random() * 40)
-      }
-      robotIds[index] = currentNumber
-    
-      
-      }
-      return robotIds
+ 
+ 
+
+
+   function getUniqueRandomValues(exclusion) {
+  // By definition, values inside of a Set are unique
+  const randomArray = new Set();
+
+  do {
+    let randomValue = Math.floor(Math.random() * 40) + 1;
+    // If the exclusion rule is satisfied push the new value in the random array
+    if (!exclusion.length || !exclusion.includes(randomValue)) {
+      randomArray.add(randomValue);
     }
+  } while (randomArray.size < 10);
+
+  console.log(randomArray);
+  
+
+  return Array.from(randomArray);
+}
 
    // If there would be higher amount of robots consider getting robots individually 
    //rather than getting all robots
@@ -98,23 +98,25 @@ for (let robot = 0; robot < robots.length; robot++) {
 
 
 for (let robot = 0; robot < robots.length; robot++) {
-  if (robots[robot].experience > 10) {
+  if (robots[robot].experience > 11) {
     tooExpierienced.push(robots[robot].id)
   }
   
 }
 
-console.log(brokenRobots)
-console.log(tooExpierienced)
+let excludedRobots = brokenRobots.concat(tooExpierienced);
+console.log("wrong " + excludedRobots);
 
-let robotIds = getRobotIds(brokenRobots, tooExpierienced)
+let robotIds = getUniqueRandomValues(excludedRobots)
+
+
 let teamOneExperience = 0;
 let teamTwoExperience = 0;
 
 let teamOne = []
 for (let index = 0; index < 5; index++) {
-  teamOne[index] = robots[robotIds[index]]
-  teamOneExperience += robots[robotIds[index]].experience;
+  teamOne[index] = robots[robotIds[index] - 1]
+  teamOneExperience += robots[robotIds[index] - 1].experience;
   
 }
 
@@ -123,8 +125,8 @@ teamOne.experience = teamOneExperience;
 
 let teamTwo = [];
 for (let index = 5; index < 10; index++) {
-   teamTwo[index] = robots[robotIds[index]];
-   teamTwoExperience += robots[robotIds[index]].experience;
+   teamTwo[index] = robots[robotIds[index] - 1];
+   teamTwoExperience += robots[robotIds[index] - 1].experience;
   
 }
 
@@ -160,12 +162,12 @@ for (let index = 0; index < danceoffCompetetors.length; index++) {
   
 }
 
+console.log(teamOne[0]);
 
 
   res.render('teams', {
     indexCSS: true,
     teamOne,
-    query,
     teamTwo,
     danceoffCompetetors
     

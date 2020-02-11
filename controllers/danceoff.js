@@ -22,15 +22,23 @@ const https = require('https');
 }
     let opponentsPair = pairOpponents(opponents);
 
-  console.log(opponentsPair);
   
+  let winnerArray = [];
  
  for (let index = 0; index < opponentsPair.length; index++) {
-   var winner = opponentsPair[index][Math.floor(Math.random() * opponentsPair[index].length)]
-   console.log(winner);
+   winnerArray[index] = opponentsPair[index][Math.floor(Math.random() * opponentsPair[index].length)]
+  
    
   }
-   
+  
+  
+const danceoffsObject = { 
+    danceoffs: opponentsPair.map((opponents, index) => ({ opponents, winner: winnerArray[index] })) 
+}
+
+console.log(danceoffsObject.danceoffs);
+console.log(danceoffsObject);
+
     res.redirect('/leaderboard')
     }
     
