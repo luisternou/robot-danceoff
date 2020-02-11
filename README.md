@@ -52,5 +52,8 @@ This collection of rust-buckets will battle each other in teams in breathtaking 
     - [x] For each dance-off, the system picks a winner randomly
     - [x] In total, 5 dance-offs take place
     - [ ] The dance-off results should be sent to the backend using the API 
+    - [x] There is an API endpoint to retrieve all dance-offs
+    - [ ] The leaderboard should ONLY be accessible if at least one competition has been finished
+    - [x] Make the App run in Docker container
 ---
 ### And we will see you in the Ballroom, but in the meantime, `Keep dancing`
