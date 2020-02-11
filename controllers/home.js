@@ -4,6 +4,10 @@
 let avatarOne = "";
 module.exports = {
   getHome: async (req, res) => {
+
+    try {
+      
+    
    
 
 let firstRandomId = Math.ceil(Math.random() * 40)
@@ -42,6 +46,11 @@ function getRobotAvatar(randomId) {
     avatarTwo
   });
 })();
+
+} catch (error) {
+     console.log(error);
+      
+    }
 
   }
 

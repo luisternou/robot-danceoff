@@ -5,10 +5,19 @@ const https = require('https');
 
  module.exports = {
    postDanceoff: async (req, res) => {
+
+     try {
+       
+   
     //Handle input
     const { danceoffs, danceoffId} = req.body
    var opponents = danceoffId.split(",");
   
+  let test = opponents.map(function (y) {
+  return parseInt(y, 10);
+})
+opponents = test;
+
 
     function pairOpponents(array) {
   var temp = array.slice();
@@ -30,16 +39,26 @@ const https = require('https');
   
    
   }
+
+let result = winnerArray.map(function (x) { 
+  return parseInt(x, 10); 
+});
+winnerArray = result;
+
+
   
   
-const danceoffsObject = { 
+let danceoffsObject = { 
     danceoffs: opponentsPair.map((opponents, index) => ({ opponents, winner: winnerArray[index] })) 
 }
+ danceoffsObject = JSON.stringify(danceoffsObject)
 
-console.log(danceoffsObject.danceoffs);
 console.log(danceoffsObject);
 
-    res.redirect('/leaderboard')
+    res.redirect('/leaderboard');
+      } catch (error) {
+       return console.log(error)
+     }
     }
     
 

@@ -4,9 +4,11 @@
 const https = require('https');
 module.exports = {
   getLeaderboard: async (req, res) => {
+  try {
     
+  
    
-      function getLeaderboardData() {
+  function getLeaderboardData() {
   return new Promise((resolve, reject) => {
     https.get('https://challenge.parkside-interactive.com/api/danceoffs/populated/', response => {
       let data = "";
@@ -33,6 +35,10 @@ module.exports = {
     leaderboardData
   });
 })();
+
+} catch (error) {
+    return console.log(error)
+  }  
     
   }
 

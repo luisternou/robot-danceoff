@@ -1,9 +1,11 @@
 
-// Include models
+
  
 const https = require('https');
 module.exports = {
   getTeams: async (req, res) => {
+try {
+  
 
 
 let query = req.query
@@ -28,7 +30,7 @@ let teamTwoName = query.teamTwo;
     }
   } while (randomArray.size < 10);
 
-  console.log(randomArray);
+
   
 
   return Array.from(randomArray);
@@ -105,7 +107,7 @@ for (let robot = 0; robot < robots.length; robot++) {
 }
 
 let excludedRobots = brokenRobots.concat(tooExpierienced);
-console.log("wrong " + excludedRobots);
+
 
 let robotIds = getUniqueRandomValues(excludedRobots)
 
@@ -162,7 +164,7 @@ for (let index = 0; index < danceoffCompetetors.length; index++) {
   
 }
 
-console.log(teamOne[0]);
+
 
 
   res.render('teams', {
@@ -174,6 +176,10 @@ console.log(teamOne[0]);
     
   });
 })();
+
+} catch (error) {
+  return console.log(error);
+}
    
   }
 

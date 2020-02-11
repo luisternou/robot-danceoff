@@ -18,7 +18,6 @@
   
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Robot ID</th>
                         <th scope="col">Robot Name</th>
                         <th scope="col">Power Move</th>
                         <th scope="col">Experience</th>
@@ -40,7 +39,6 @@
        <tbody>
                     
                         <tr>
-                          <td>{{this.id}}</td>
                             <td>{{this.name}}</td>
                             <td>{{this.powermove}}</td>
                             <td>{{this.experience}}</td> 
@@ -96,7 +94,6 @@
   
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Robot ID</th>
                         <th scope="col">Robot Name</th>
                         <th scope="col">Power Move</th>
                         <th scope="col">Experience</th>
@@ -118,7 +115,6 @@
        <tbody>
                     
                         <tr>
-                          <td>{{this.id}}</td>
                             <td>{{this.name}}</td>
                             <td>{{this.powermove}}</td>
                             <td>{{this.experience}}</td> 
@@ -177,7 +173,7 @@
                   </div>
                   <div class="modal-body text-secondary">
           	<form action="danceoff" method="POST">
-               <input type="range" min="1" max="5" value="2" class="slider" id="danceoffs" name="danceoffs">
+               <input type="range" min="1" max="5" value="5" class="slider" id="danceoffs" name="danceoffs" disabled>
                  <p>Danceoffs: <span id="danceoffAmount"></span></p>
                  <input type="hidden" name="danceoffId" value="{{danceoffCompetetors}}">
                  <button class="btn btn-primary" type="submit">Let's get ready to dance</button>
