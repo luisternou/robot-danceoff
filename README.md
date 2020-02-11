@@ -25,8 +25,9 @@ This collection of rust-buckets will battle each other in teams in breathtaking 
     3.1. `Docker` : 
 
         3.1.1. Make sure you have `Docker` installed
-         
-      3.1.2. Run the command `docker-compose up` and let the project set up
+
+        3.1.2. Run the command `docker-compose up` and let the project set up
+
     3.2. `Node`:
 
         3.2.1. Make sure you have `Node.js` installed 
