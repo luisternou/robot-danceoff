@@ -4,6 +4,8 @@
 module.exports = {
   getHome: async (req, res) => {
     try {
+
+const title = 'Strictly come dancing - Droid Edition'
       
  const API_URL = 'https://challenge.parkside-interactive.com/api/robots/'  
    
@@ -54,7 +56,8 @@ function getRobotAvatar(randomId, url) {
   res.render('index', {
     indexCSS: true,
     avatarOne,
-    avatarTwo
+    avatarTwo,
+    title
   });
 })();
 

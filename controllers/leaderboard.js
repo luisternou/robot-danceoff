@@ -7,6 +7,7 @@ module.exports = {
   getLeaderboard: async (req, res) => {
 
   try {
+    let title = 'The Top King pins'
  let isNotAllowedToBeViewed = 0;
  const API_URL = 'https://challenge.parkside-interactive.com/api/danceoffs/populated/'  
 
@@ -14,6 +15,7 @@ module.exports = {
   if ((ref === undefined) || (!ref.includes('team')))
 {
   isNotAllowedToBeViewed = 1;
+  title = 'No, you can\'t go here';
 }
   
  //-----------------------------------------------------------------------------
@@ -49,12 +51,13 @@ module.exports = {
     res.render('leaderboard', {
     indexCSS: true,
     leaderboardData,
+    title
  
   });
  }
  else {
   res.render('forbidden', {
-    errorCSS: true,
+    title, errorCSS: true
   });
  }
 })();

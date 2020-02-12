@@ -10,7 +10,7 @@ try {
 const EXPERIENCE_TOO_HIGH = 11
 const ARRAY_LENGTH = 10
 const HALF_ARRAY = ARRAY_LENGTH/2
-
+let title = 'There is no I in Team'
 
 let query = req.query
 
@@ -209,7 +209,8 @@ for (let index = 0; index < danceoffCompetetors.length; index++) {
     indexCSS: true,
     teamOne,
     teamTwo,
-    danceoffCompetetors
+    danceoffCompetetors,
+    title
     
     
   });

@@ -1,6 +1,7 @@
 // get 404 page
 module.exports = {
   getError: (req, res) => {
-    res.render('error', { errorCSS: true })
+    const title = 'Eish, it\'s broken';
+    res.render('error', {title ,errorCSS: true })
   }
 }
