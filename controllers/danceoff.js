@@ -9,17 +9,24 @@ const https = require('https');
      try {
        
    
- 
-    const { danceoffs, danceoffId} = req.body
-   var opponents = danceoffId.split(",");
+ // Get Post body
+  const { danceoffs, danceoffId} = req.body
+  let opponents = danceoffId.split(",");
   
-  let test = opponents.map(function (y) {
+  let intOpponents = opponents.map(function (y) {
   return parseInt(y, 10);
 })
-opponents = test;
+opponents = intOpponents;
 
-
-    function pairOpponents(array) {
+//-----------------------------------------------------------------------------
+///
+/// Creates an Array whereby each element is in a pair
+///
+/// @param array The Flat Array
+//  @param url The URL of the API 
+/// @return pairArray The Array where each element is paired up 
+//
+  function pairOpponents(array) {
   var temp = array.slice();
   var pairArray = [];
 
@@ -29,10 +36,12 @@ opponents = test;
 
   return pairArray;
 }
-    let opponentsPair = pairOpponents(opponents);
+  let opponentsPair = pairOpponents(opponents);
 
   
   let winnerArray = [];
+
+// create array of winners which are chosen at random
  
  for (let index = 0; index < opponentsPair.length; index++) {
    winnerArray[index] = opponentsPair[index][Math.floor(Math.random() * opponentsPair[index].length)]
@@ -40,19 +49,22 @@ opponents = test;
    
   }
 
-let result = winnerArray.map(function (x) { 
+// Convert every element in the Array to an Integer
+let winnerInt = winnerArray.map(function (x) { 
   return parseInt(x, 10); 
 });
-winnerArray = result;
+winnerArray = winnerInt;
 
 
   
-  
+// Convert and combine arrays to the form of Dance-off model
+
 let danceoffsObject = { 
     danceoffs: opponentsPair.map((opponents, index) => ({ opponents, winner: winnerArray[index] })) 
 }
  danceoffsObject = JSON.stringify(danceoffsObject)
 
+// Config for Post Request
 const options = {
   hostname: 'challenge.parkside-interactive.com',
   port: 443,
@@ -64,6 +76,7 @@ const options = {
   }
 }
 
+// Post request of Danceoffs 
 
 const postRequest = https.request(options, (res) => {
   console.log(`statusCode: ${res.statusCode}`)
@@ -87,10 +100,6 @@ console.log(danceoffsObject);
        return console.log(error)
      }
     }
-    
-
-
-
 
  }
 

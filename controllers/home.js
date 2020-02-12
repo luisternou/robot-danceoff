@@ -1,14 +1,13 @@
 
-
+// include modules
  const https = require('https');
-let avatarOne = "";
 module.exports = {
   getHome: async (req, res) => {
-
     try {
       
-    
+ const API_URL = 'https://challenge.parkside-interactive.com/api/robots/'  
    
+// Generate two random ids for homepage avatars
 
 let firstRandomId = Math.ceil(Math.random() * 40)
 let secondRandomId = Math.ceil(Math.random() * 40)
@@ -18,9 +17,18 @@ if (secondRandomId === firstRandomId){
 	}
 
 
-function getRobotAvatar(randomId) {
+//-----------------------------------------------------------------------------
+///
+/// Get the Robot Avatar based on the ID from the API
+///
+/// @param randomId The ID of the robot 
+//  @param url The URL of the API 
+/// @return None
+//
+
+function getRobotAvatar(randomId, url) {
   return new Promise((resolve, reject) => {
-    https.get('https://challenge.parkside-interactive.com/api/robots/' + randomId, response => {
+    https.get(url + randomId, response => {
       let data = "";
       response.on('data', chunk => {
         data += chunk;
@@ -37,8 +45,11 @@ function getRobotAvatar(randomId) {
 }
 
 (async() => {
-  let avatarOne = await getRobotAvatar(firstRandomId);
-  let avatarTwo = await getRobotAvatar(secondRandomId);
+
+  // Call function to get the robots' Avatar
+
+  let avatarOne = await getRobotAvatar(firstRandomId, API_URL);
+  let avatarTwo = await getRobotAvatar(secondRandomId, API_URL);
 
   res.render('index', {
     indexCSS: true,

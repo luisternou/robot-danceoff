@@ -1,16 +1,22 @@
 
-// Include models
+// Include modules
 
 const https = require('https');
 module.exports = {
   getLeaderboard: async (req, res) => {
   try {
-    
+ const API_URL = 'https://challenge.parkside-interactive.com/api/danceoffs/populated/'   
   
-   
-  function getLeaderboardData() {
+ //-----------------------------------------------------------------------------
+///
+/// Get the Leaderboard Data from the API
+///
+/// @param url The URL of the API  
+/// @return None
+//  
+  function getLeaderboardData(url) {
   return new Promise((resolve, reject) => {
-    https.get('https://challenge.parkside-interactive.com/api/danceoffs/populated/', response => {
+    https.get(url, response => {
       let data = "";
       response.on('data', chunk => {
         data += chunk;
@@ -27,7 +33,7 @@ module.exports = {
 }
 
 (async() => {
-  let leaderboardData = await getLeaderboardData();
+  let leaderboardData = await getLeaderboardData(API_URL);
   
 
   res.render('leaderboard', {
