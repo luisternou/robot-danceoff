@@ -9,7 +9,7 @@ const https = require('https');
      try {
        
    
-    //Handle input
+ 
     const { danceoffs, danceoffId} = req.body
    var opponents = danceoffId.split(",");
   
@@ -52,6 +52,33 @@ let danceoffsObject = {
     danceoffs: opponentsPair.map((opponents, index) => ({ opponents, winner: winnerArray[index] })) 
 }
  danceoffsObject = JSON.stringify(danceoffsObject)
+
+const options = {
+  hostname: 'challenge.parkside-interactive.com',
+  port: 443,
+  path: '/api/danceoffs',
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Content-Length': danceoffsObject.length
+  }
+}
+
+
+const postRequest = https.request(options, (res) => {
+  console.log(`statusCode: ${res.statusCode}`)
+
+  res.on('data', (d) => {
+    process.stdout.write(d)
+  })
+})
+
+postRequest.on('error', (error) => {
+  console.error(error)
+})
+
+postRequest.write(danceoffsObject)
+postRequest.end()
 
 console.log(danceoffsObject);
 
