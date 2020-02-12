@@ -2,10 +2,19 @@
 // Include modules
 
 const https = require('https');
+ 
 module.exports = {
   getLeaderboard: async (req, res) => {
+
   try {
- const API_URL = 'https://challenge.parkside-interactive.com/api/danceoffs/populated/'   
+ let isNotAllowedToBeViewed = 0;
+ const API_URL = 'https://challenge.parkside-interactive.com/api/danceoffs/populated/'  
+
+ let ref = req.headers.referer;
+  if ((ref === undefined) || (!ref.includes('team')))
+{
+  isNotAllowedToBeViewed = 1;
+}
   
  //-----------------------------------------------------------------------------
 ///
@@ -36,10 +45,18 @@ module.exports = {
   let leaderboardData = await getLeaderboardData(API_URL);
   
 
-  res.render('leaderboard', {
+ if (isNotAllowedToBeViewed === 0) {
+    res.render('leaderboard', {
     indexCSS: true,
-    leaderboardData
+    leaderboardData,
+ 
   });
+ }
+ else {
+  res.render('forbidden', {
+    errorCSS: true,
+  });
+ }
 })();
 
 } catch (error) {

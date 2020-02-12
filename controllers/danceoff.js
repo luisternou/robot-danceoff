@@ -95,7 +95,11 @@ postRequest.end()
 
 console.log(danceoffsObject);
 
-    res.redirect('/leaderboard');
+    res.redirect(301, '/leaderboard');
+    res.status(200).json({
+    status: 'succes',
+    data: req.body,
+  })
       } catch (error) {
        return console.log(error)
      }

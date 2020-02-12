@@ -183,6 +183,7 @@ for (let robot = HALF_ARRAY; robot < teamTwo.length; robot++) {
 }
 
 
+
 // Randomize Robot order
 
 teamOneIds = shuffle(teamOneIds);
