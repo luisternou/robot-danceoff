@@ -7,7 +7,7 @@ const homeController = require('../controllers/danceoff')
 
 
 // router.get('/', homeController.getDanceoff)
-router.post('/', [
+    router.post('/', [
      body('danceoffs'),
      body('danceoffId')
 

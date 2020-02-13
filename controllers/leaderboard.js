@@ -4,19 +4,20 @@
 const https = require('https');
  
 module.exports = {
-  getLeaderboard: async (req, res) => {
+    getLeaderboard: async (req, res) => {
 
-  try {
-    let title = 'The Top King pins'
- let isNotAllowedToBeViewed = 0;
- const API_URL = 'https://challenge.parkside-interactive.com/api/danceoffs/populated/'  
+    try 
+    {
+      let title = 'The Top King pins'
+      let isNotAllowedToBeViewed = 0;
+      const API_URL = 'https://challenge.parkside-interactive.com/api/danceoffs/populated/'  
 
- let ref = req.headers.referer;
-  if ((ref === undefined) || (!ref.includes('team')))
-{
-  isNotAllowedToBeViewed = 1;
-  title = 'No, you can\'t go here';
-}
+      let ref = req.headers.referer;
+      if ((ref === undefined) || (!ref.includes('team')))
+      {
+        isNotAllowedToBeViewed = 1;
+        title = 'No, you can\'t go here';
+      }
   
  //-----------------------------------------------------------------------------
 ///
@@ -44,6 +45,7 @@ module.exports = {
 }
 
 (async() => {
+  
   let leaderboardData = await getLeaderboardData(API_URL);
   
 
