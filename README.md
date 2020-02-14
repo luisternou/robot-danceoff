@@ -138,3 +138,4 @@ app.delete('/api/shops/:id',(req, res) => {
 });
 ```
 
+I would then have it run on a server/ docker container as a node.js application or as a microservice in a docker container
