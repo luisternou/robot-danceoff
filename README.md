@@ -37,6 +37,7 @@ This collection of rust-buckets will battle each other in teams in breathtaking 
 4. Enter `localhost:3000` into your browser
 5. Enjoy
 
+
 ## Features 
 
 - [x] Random Robots are displayed on Homepage and changed on every refresh
@@ -57,3 +58,80 @@ This collection of rust-buckets will battle each other in teams in breathtaking 
     - [x] Make the App run in Docker container
 ---
 ### And we will see you in the Ballroom, but in the meantime, `Keep dancing`
+
+## Full Stack API Setup
+
+If I would be tasked to set up an API, I would:
+Firstly set up a Data Model (if not already provided) in the form of a `MYSQL` or `MONGO DB` Database where I would store all Data to be interacted with through the API.
+Secondly, I would most likely set up a `node.js` application using `express.js` and `body-parser` packages.
+
+**We will use a shop finder as an example**
+
+After the Database has been set up and a `node.js` app is created, I would set up the routes:
+
+**As an example**
+To get all shops in the database, I would do something like this:
+
+```javascript
+app.get('/api/shops/',(req, res) => {
+  let sql = "SELECT * FROM shops";
+  let query = conn.query(sql, (err, results) => {
+    if(err) throw err;
+    res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+  });
+});
+
+```
+
+To filter shops by name and/or type:
+
+```javascript
+app.get('/api/shops/',(req, res) => {
+  var shoptype = req.query.type ||"";
+  var shopname = req.query.name ||"";
+  let sql = "SELECT shops.* FROM shops WHERE name like '%"+shopname+"%' AND \
+   type like '%"+shoptype+"%'";
+  let query = conn.query(sql, (err, results) => {
+    if(err) throw err;
+    res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+  });
+});
+```
+
+To add a new shop
+
+```javascript
+app.post('/api/shops',(req, res) => {
+  let data = {lon: req.body.lon,lat: req.body.lat,name: req.body.name, website: req.body.website, trading_hours: req.body.trading_hours, type: req.body.type, street: req.body.street, postal_code: req.body.postal_code};
+  let sql = "INSERT INTO shops SET ?";
+  let query = conn.query(sql, data,(err, results) => {
+    if(err) throw err;
+    res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+  });
+});
+```
+
+To update a shop
+
+```javascript
+app.put('/api/shops/:id',(req, res) => {
+  let sql = "UPDATE shops SET name='"+req.body.name+"', website='"+req.body.website+"', trading_hours='"+req.body.trading_hours+"', type='"+req.body.type+"', street='"+req.body.street+"' , postal_code='"+req.body.postal_code+"' WHERE id="+req.params.id;
+  let query = conn.query(sql, (err, results) => {
+    if(err) throw err;
+    res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+  });
+});
+```
+
+To delete a shop
+
+```javascript
+app.delete('/api/shops/:id',(req, res) => {
+  let sql = "DELETE FROM shops WHERE id="+req.params.id+"";
+  let query = conn.query(sql, (err, results) => {
+    if(err) throw err;
+      res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+  });
+});
+```
+
