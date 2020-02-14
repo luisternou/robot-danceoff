@@ -4,6 +4,7 @@ const app = express()
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const handlebarHelpers = require('./handlebars-helpers')
+const opn = require('opn');
 
 
 
@@ -57,4 +58,5 @@ app.use(errorController.getError)
 // Start and listen to server
 app.listen(process.env.PORT || port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
+  opn('http://localhost:3000');
 })

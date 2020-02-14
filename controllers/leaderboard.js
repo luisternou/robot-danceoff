@@ -15,7 +15,6 @@ module.exports = {
         let ref = req.headers.referer;
 
         let doesContain = /team|leaderboard/.test(ref);
-console.log(doesContain);
 
 
         if ((ref === undefined) || (doesContain === false))
