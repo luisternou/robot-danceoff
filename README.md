@@ -62,7 +62,9 @@ This collection of rust-buckets will battle each other in teams in breathtaking 
 ## Full Stack API Setup
 
 If I would be tasked to set up an API, I would:
+
 Firstly set up a Data Model (if not already provided) in the form of a `MYSQL` or `MONGO DB` Database where I would store all Data to be interacted with through the API.
+
 Secondly, I would most likely set up a `node.js` application using `express.js` and `body-parser` packages.
 
 **We will use a shop finder as an example**
