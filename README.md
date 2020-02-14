@@ -58,7 +58,7 @@ This collection of rust-buckets will battle each other in teams in breathtaking 
     - [x] Make the App run in Docker container
 ---
 ### And we will see you in the Ballroom, but in the meantime, `Keep dancing`
-
+---
 ## Full Stack API Setup
 
 If I would be tasked to set up an API, I would:
