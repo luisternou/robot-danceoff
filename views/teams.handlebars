@@ -11,7 +11,7 @@
       <button type="button" class="btn btn-block btn-dark" data-toggle="modal" data-target="#startDanceoff"><i class="fas fa-robot"></i> Let's get this road on the show</button>
  <div class="col-xs-5">
 <h2 class="text-uppercase sub-header">Team {{teamOne.teamName}}</h2>
-<h3 class="sub-header">Experience {{teamOne.experience}}</h3>
+<h4 class="sub-header">Experience {{teamOne.experience}}</h4>
   <div class="table-responsive">
                 
                  <table id="searchTable" class="table table-dark table-hover" >
@@ -182,14 +182,13 @@
             <script>
              var slider = document.getElementById("danceoffs");
 var output = document.getElementById("danceoffAmount");
-output.innerHTML = slider.value; // Display the default slider value
+output.innerHTML = slider.value; 
 
-// Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
   output.innerHTML = this.value;
 }
             </script>
-		</div><!-- /container -->
+		</div>
 		
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No, i'll go back</button>

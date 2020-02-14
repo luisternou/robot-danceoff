@@ -7,11 +7,11 @@ module.exports = {
        
    
     // Get Post body
-    const { danceoffs, danceoffId} = req.body
+    const { danceoffId} = req.body;
     let opponents = danceoffId.split(",");
     let intOpponents = opponents.map(function (y) {
       return parseInt(y, 10);
-    })
+    });
     opponents = intOpponents;
 
     //-----------------------------------------------------------------------------
@@ -44,7 +44,7 @@ module.exports = {
   }
 
     // Convert every element in the Array to an Integer
-    let winnerInt = winnerArray.map(function (x) { 
+    let winnerInt = winnerArray.map(function (x) {
       return parseInt(x, 10); 
     });
     winnerArray = winnerInt;
@@ -55,8 +55,8 @@ module.exports = {
 
     let danceoffsObject = { 
       danceoffs: opponentsPair.map((opponents, index) => ({ opponents, winner: winnerArray[index] })) 
-    }
-    danceoffsObject = JSON.stringify(danceoffsObject)
+    };
+    danceoffsObject = JSON.stringify(danceoffsObject);
 
     // Config for Post Request
     const options = {
@@ -68,24 +68,24 @@ module.exports = {
       'Content-Type': 'application/json',
       'Content-Length': danceoffsObject.length
       }
-    }
+    };
 
     // Post request of Danceoffs 
 
     const postRequest = https.request(options, (res) => {
-    console.log(`statusCode: ${res.statusCode}`)
+    console.log(`statusCode: ${res.statusCode}`);
 
     res.on('data', (d) => {
       process.stdout.write(d)
       })
-    })
+    });
 
     postRequest.on('error', (error) => {
       console.error(error)
-  })
+  });
 
-    postRequest.write(danceoffsObject)
-    postRequest.end()
+    postRequest.write(danceoffsObject);
+    postRequest.end();
 
 
     res.redirect(301, '/leaderboard');
@@ -98,7 +98,7 @@ module.exports = {
     }
   }
 
- }
+ };
 
 
 

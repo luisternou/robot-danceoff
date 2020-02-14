@@ -9,13 +9,14 @@ module.exports =
   {
     try 
     {
-  
-      const EXPERIENCE_TOO_HIGH = 11
-      const ARRAY_LENGTH = 10
-      const HALF_ARRAY = ARRAY_LENGTH/2
-      const title = 'There is no I in Team'
 
-      let query = req.query
+      const API_URL = 'https://challenge.parkside-interactive.com/api/robots/';
+      const EXPERIENCE_TOO_HIGH = 11;
+      const ARRAY_LENGTH = 10;
+      const HALF_ARRAY = ARRAY_LENGTH/2;
+      const title = 'There is no I in Team';
+
+      let query = req.query;
 
       let teamOneName = query.teamOne;
       let teamTwoName = query.teamTwo;
@@ -52,11 +53,11 @@ module.exports =
       /// @param None
       /// @return None
       // 
-      function getRobots() 
+      function getRobots(url)
       {
-        return new Promise((resolve, reject) => 
+        return new Promise((resolve) =>
         {
-          https.get('https://challenge.parkside-interactive.com/api/robots/' , response => 
+          https.get(url , response =>
           {
             let data = "";
             response.on('data', chunk => {
@@ -110,7 +111,7 @@ module.exports =
         }
     
         return newArr;
-      };
+      }
  
  
 
@@ -119,7 +120,7 @@ module.exports =
 
 
 
-      let robots = await getRobots();
+      let robots = await getRobots(API_URL);
 
       let brokenRobots = [];
       let tooExpierienced = [];
@@ -151,17 +152,17 @@ module.exports =
       let excludedRobots = brokenRobots.concat(tooExpierienced);
 
 
-      let robotIds = getRandomRobotIds(excludedRobots)
+      let robotIds = getRandomRobotIds(excludedRobots);
 
       // Create Team one with its total experience
 
       let teamOneExperience = 0;
       let teamTwoExperience = 0;
 
-      let teamOne = []
+      let teamOne = [];
       for (let index = 0; index < HALF_ARRAY; index++) 
       {
-        teamOne[index] = robots[robotIds[index] - 1]
+        teamOne[index] = robots[robotIds[index] - 1];
         teamOneExperience += robots[robotIds[index] - 1].experience;
   
       
@@ -208,7 +209,7 @@ module.exports =
 
       // Pair up opponents
 
-      let danceoffCompetetors = interleave(teamOneIds, teamTwoIds)
+      let danceoffCompetetors = interleave(teamOneIds, teamTwoIds);
 
 
       let danceoffId = "";
@@ -241,7 +242,7 @@ module.exports =
    
   }
 
-}
+};
 
   
 

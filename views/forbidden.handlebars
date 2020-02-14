@@ -1,9 +1,14 @@
+<script src="/javascripts/redirect.js"></script>
+<script src="/javascripts/countdown.js"></script>
 <section class="error-container mt-5 position-relative">
   <div class="rounded w-100 h-100 inner-container d-flex flex-column justify-content-center align-items-center">
-    <h1 class="display-3"><i class="fas fa-exclamation-triangle"></i></h1>
+    <h1 class="display-3"><i class="fas fa-hand-paper"></i></h1>
     <h3>Eish, you must have gotten lost</h3>
    
     <p>You can only view the leaderboard if you have completed a competition </p>
     <p>You will be redirected to the home page where you can start a new competition now now</p>
+  <p id="countdown">If you are not redirected in 5 seconds</p>
+  <button class="btn btn-dark" onclick="window.location.href='/'">Click here</button>
   </div>
 </section>
+

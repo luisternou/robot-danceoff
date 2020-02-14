@@ -5,14 +5,14 @@ module.exports = {
   getHome: async (req, res) => {
     try {
 
-    const title = 'Strictly come dancing - Droid Edition'
+    const title = 'Strictly come dancing - Droid Edition';
       
-    const API_URL = 'https://challenge.parkside-interactive.com/api/robots/'  
+    const API_URL = 'https://challenge.parkside-interactive.com/api/robots/';
    
     // Generate two random ids for homepage avatars
 
-    let firstRandomId = Math.ceil(Math.random() * 40)
-    let secondRandomId = Math.ceil(Math.random() * 40)
+    let firstRandomId = Math.ceil(Math.random() * 40);
+    let secondRandomId = Math.ceil(Math.random() * 40);
 
     if (secondRandomId === firstRandomId){
 	    secondRandomId = Math.ceil(Math.random() * 40)
@@ -29,7 +29,7 @@ module.exports = {
     //
 
     function getRobotAvatar(randomId, url) {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         https.get(url + randomId, response => {
           let data = "";
           response.on('data', chunk => {
@@ -63,6 +63,6 @@ module.exports = {
      console.log(error);     
     }
   }
-}
+};
 
   

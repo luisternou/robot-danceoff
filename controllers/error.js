@@ -4,4 +4,4 @@ module.exports = {
     const title = 'Eish, it\'s broken';
     res.render('error', {title ,errorCSS: true })
   }
-}
+};
