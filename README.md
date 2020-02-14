@@ -70,6 +70,7 @@ Secondly, I would most likely set up a `node.js` application using `express.js` 
 After the Database has been set up and a `node.js` app is created, I would set up the routes:
 
 **As an example**
+
 To get all shops in the database, I would do something like this:
 
 ```javascript
